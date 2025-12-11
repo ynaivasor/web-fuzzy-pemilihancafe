@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CafeStudy - Temukan Cafe Terbaik untuk Belajar</title>
+
     <style>
         * {
             margin: 0;
@@ -80,40 +81,14 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        .bean1 {
-            top: 15%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .bean2 {
-            top: 30%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-
-        .bean3 {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .bean4 {
-            bottom: 30%;
-            right: 10%;
-            animation-delay: 1s;
-        }
+        .bean1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .bean2 { top: 30%; right: 15%; animation-delay: 2s; }
+        .bean3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+        .bean4 { bottom: 30%; right: 10%; animation-delay: 1s; }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
         .hero-content {
@@ -211,6 +186,7 @@
             margin-bottom: 3rem;
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -253,8 +229,7 @@
         <div class="hero-content">
             <h1>Temukan Cafe Terbaik untuk Belajar</h1>
             <p class="subtitle">
-                Sistem Pendukung Keputusan dengan Metode Fuzzy untuk membantu Anda menemukan cafe yang sempurna sesuai
-                kebutuhan belajar Anda
+                Sistem Pendukung Keputusan dengan Metode Fuzzy untuk membantu Anda menemukan cafe yang sempurna sesuai kebutuhan belajar Anda
             </p>
             <a href="kriteria.html" class="cta-button">Mulai Pencarian</a>
         </div>
@@ -268,29 +243,25 @@
             <div class="feature-card">
                 <div class="feature-icon">📝</div>
                 <h3>1. Input Kriteria</h3>
-                <p>Masukkan preferensi Anda seperti kecepatan WiFi, tingkat kebisingan, harga, dan kenyamanan yang
-                    diinginkan</p>
+                <p>Masukkan preferensi Anda seperti harga, jarak, dan fasilitas sesuai kebutuhan Anda.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🔄</div>
                 <h3>2. Fuzzifikasi</h3>
-                <p>Sistem mengkonversi nilai input menjadi nilai fuzzy menggunakan fungsi keanggotaan yang telah
-                    ditentukan</p>
+                <p>Nilai input diubah menjadi nilai fuzzy menggunakan fungsi keanggotaan yang telah ditentukan.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">⚙️</div>
+                <div class="feature-icon">⚙</div>
                 <h3>3. Inferensi Fuzzy</h3>
-                <p>Menerapkan aturan-aturan fuzzy Tsukamoto untuk mengevaluasi setiap cafe berdasarkan kriteria yang ada
-                </p>
+                <p>27 aturan fuzzy digunakan untuk menentukan tingkat rekomendasi cafe.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
                 <h3>4. Defuzzifikasi</h3>
-                <p>Menghasilkan nilai crisp (tegas) sebagai skor akhir dan meranking cafe terbaik untuk kebutuhan
-                    belajar Anda</p>
+                <p>Hasil akhir berupa nilai rekomendasi untuk meranking cafe yang paling sesuai preferensi Anda.</p>
             </div>
         </div>
     </section>
@@ -303,27 +274,33 @@
             <div class="feature-card" style="text-align: left;">
                 <div class="feature-icon" style="text-align: center;">🎓</div>
                 <h3 style="text-align: center; margin-bottom: 1.5rem;">Project Akhir Sistem Pendukung Keputusan</h3>
+
                 <p style="margin-bottom: 1rem;">
-                    CafeStudy adalah sistem pendukung keputusan yang dikembangkan menggunakan <strong
-                        style="color: #d4a574;">Metode Fuzzy Tsukamoto</strong> untuk membantu mahasiswa dan pelajar
-                    menemukan cafe yang paling sesuai dengan kebutuhan belajar mereka.
+                    CafeStudy adalah sistem pendukung keputusan menggunakan <strong style="color:#d4a574;">Metode Fuzzy Tsukamoto</strong> untuk membantu mahasiswa memilih cafe terbaik untuk belajar.
                 </p>
+
                 <p style="margin-bottom: 1rem;">
-                    Sistem ini mengevaluasi berbagai kriteria penting seperti kecepatan WiFi, tingkat kebisingan, harga
-                    menu, kenyamanan tempat duduk, dan ketersediaan colokan listrik untuk menghasilkan rekomendasi yang
-                    objektif dan akurat.
+                    Sistem menilai tiga kriteria utama: <strong>harga</strong>, <strong>jarak</strong>, dan <strong>fasilitas</strong>. Ketiganya diproses melalui 27 aturan fuzzy yang menggambarkan kondisi nyata.
                 </p>
-                <p>
-                    Dengan menerapkan logika fuzzy Tsukamoto, sistem mampu menangani ketidakpastian dalam penilaian
-                    kriteria dan memberikan hasil yang lebih realistis sesuai dengan preferensi pengguna.
+
+                <p style="margin-bottom: 1rem;">
+                    Logika fuzzy Tsukamoto membuat hasil rekomendasi lebih realistis dan sesuai preferensi pengguna.
+                </p>
+
+                <p style="margin-bottom: 1rem;">
+                    Project ini merupakan tugas mata kuliah <strong>Sistem Pendukung Keputusan</strong> yang dibimbing oleh <strong>Dr. Herlina Jayadiyanti S.T., M.T.</strong>.
+                    Disusun oleh:
+                    <br>• <strong>Rosa Viany Herdante (124240128)</strong>
+                    <br>• <strong>Hanggara Winasis (124240125)</strong>
+                    <br>• <strong>Sabilla Isjayanti (124240020)</strong>
+                    <br>• <strong>Radityas Shifa Zuleika (124240002)</strong>
                 </p>
             </div>
         </div>
     </section>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -336,14 +313,11 @@
             });
         });
 
-        // Navbar background on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(44, 24, 16, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(44, 24, 16, 0.9)';
-            }
+            navbar.style.background = window.scrollY > 50
+                ? 'rgba(44, 24, 16, 0.95)'
+                : 'rgba(44, 24, 16, 0.9)';
         });
     </script>
 </body>

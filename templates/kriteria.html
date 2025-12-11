@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Kriteria - CafeStudy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #2c1810, #5d4037);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(44, 24, 16, .95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .3)
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4a574;
+            text-decoration: none
+        }
+
+        .coffee-icon {
+            font-size: 2rem
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 3rem
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #d4a574;
+            margin-bottom: 1rem
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #e8d5c4;
+            font-size: 1.1rem;
+            margin-bottom: 3rem
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, .1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 165, 116, .3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .3)
+        }
+
+        .info-box {
+            background: rgba(212, 165, 116, .1);
+            border-left: 4px solid #d4a574;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2.5rem
+        }
+
+        .info-box p {
+            color: #e8d5c4;
+            line-height: 1.6
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #d4a574;
+            margin-bottom: 1rem;
+            font-weight: 600
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem
+        }
+
+        input[type=range] {
+            appearance: none;
+            background: transparent;
+            flex: 1;
+            cursor: pointer
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            background: rgba(255, 255, 255, .2);
+            height: .5rem;
+            border-radius: 10px
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            appearance: none;
+            margin-top: -8px;
+            background: linear-gradient(135deg, #d4a574, #b8936f);
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(212, 165, 116, .5)
+        }
+
+        .value-display {
+            background: rgba(255, 255, 255, .1);
+            padding: .8rem 1.5rem;
+            border-radius: 10px;
+            min-width: 150px;
+            text-align: center;
+            font-weight: 600;
+            color: #d4a574;
+            font-size: 1.1rem;
+            border: 2px solid rgba(212, 165, 116, .3)
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #d4a574, #b8936f);
+            color: #2c1810;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, .4)
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, .6)
+        }
+
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-reset:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+        }
+
+        @media(max-width:768px) {
+            .container {
+                padding: 7rem 1.5rem 2rem
+            }
+
+            .form-card {
+                padding: 2rem 1.5rem
+            }
+
+            .page-title {
+                font-size: 2rem
+            }
+
+            .slider-container {
+                flex-direction: column;
+                gap: 1rem
+            }
+
+            .value-display {
+                width: 100%
+            }
+
+            .button-group {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="coffee-icon">☕</span>
+            <span>CafeStudy</span>
+        </a>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Input Kriteria Pencarian</h1>
+        <p class="page-subtitle">Sesuaikan kriteria cafe yang Anda inginkan untuk belajar</p>
+
+        <div class="form-card">
+            <div class="info-box">
+                <p>💡 Geser slider untuk menyesuaikan preferensi Anda. Sistem menggunakan metode Fuzzy Tsukamoto.</p>
+            </div>
+
+            <form id="criteriaForm" method="POST" action="/process">
+
+                <div class="form-group">
+                    <label for="harga">💰 Harga</label>
+                    <div class="slider-container">
+                        <input type="range" id="harga" name="harga" min="0" max="100" step="1" value="50">
+                        <div class="value-display" id="hargaValue">Normal (50)</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="jarak">📍 Jarak</label>
+                    <div class="slider-container">
+                        <input type="range" id="jarak" name="jarak" min="0" max="100" step="1" value="50">
+                        <div class="value-display" id="jarakValue">Sedang (50)</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fasilitas">⚡ Fasilitas</label>
+                    <div class="slider-container">
+                        <input type="range" id="fasilitas" name="fasilitas" min="0" max="100" step="1" value="50">
+                        <div class="value-display" id="fasilitasValue">Lengkap (50)</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit">🔍 Lihat Hasil Rekomendasi</button>
+                    <button type="button" class="btn btn-reset" onclick="resetForm()">↺ Reset</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function getHargaLabel(v) { return v <= 40 ? "Murah" : v >= 60 ? "Mahal" : "Normal" }
+        function getJarakLabel(v) { return v <= 40 ? "Dekat" : v >= 60 ? "Jauh" : "Sedang" }
+        function getFasilitasLabel(v) { return v <= 40 ? "Tidak Lengkap" : v >= 60 ? "Sangat Lengkap" : "Lengkap" }
+
+        function updateSlider(id, valId, labelFn) {
+            const s = document.getElementById(id);
+            const v = document.getElementById(valId);
+            function apply() { v.textContent = `${labelFn(parseInt(s.value))} (${s.value})` }
+            s.addEventListener('input', apply);
+            apply();
+        }
+
+        function resetForm() {
+            ['harga', 'jarak', 'fasilitas'].forEach(id => document.getElementById(id).value = 50);
+            document.getElementById('hargaValue').textContent = 'Normal (50)';
+            document.getElementById('jarakValue').textContent = 'Sedang (50)';
+            document.getElementById('fasilitasValue').textContent = 'Lengkap (50)';
+        }
+
+        updateSlider('harga', 'hargaValue', getHargaLabel);
+        updateSlider('jarak', 'jarakValue', getJarakLabel);
+        updateSlider('fasilitas', 'fasilitasValue', getFasilitasLabel);
+    </script>
+</body>
+
+</html>

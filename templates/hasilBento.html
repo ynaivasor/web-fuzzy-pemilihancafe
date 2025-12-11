@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c1810 0%, #5d4037 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4a574;
+            text-decoration: none;
+        }
+
+        .coffee-icon {
+            font-size: 2rem;
+        }
+
+        .back-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: #d4a574;
+            border: 2px solid #d4a574;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #d4a574;
+            color: #2c1810;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 3rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #d4a574;
+            margin-bottom: 1rem;
+        }
+
+        .criteria-summary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            text-align: center;
+        }
+
+        .criteria-summary h3 {
+            color: #d4a574;
+            margin-bottom: 1rem;
+        }
+
+        .criteria-items {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .criteria-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .criteria-item strong {
+            color: #e8d5c4;
+        }
+
+        .cafe-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .cafe-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            transition: transform 0.3s;
+        }
+
+        .cafe-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cafe-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cafe-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cafe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .cafe-rank {
+            background: linear-gradient(135deg, #d4a574 0%, #b8936f 100%);
+            color: #2c1810;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .cafe-name {
+            font-size: 1.8rem;
+            color: #d4a574;
+            margin-bottom: 0.5rem;
+        }
+
+        .cafe-score {
+            font-size: 1.2rem;
+            color: #e8d5c4;
+            margin-bottom: 1rem;
+        }
+
+        .cafe-score strong {
+            color: #d4a574;
+            font-size: 1.5rem;
+        }
+
+        .cafe-description {
+            color: #e8d5c4;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .coffee-beans {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.05;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .bean1 {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bean2 {
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .bean3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .bean4 {
+            bottom: 30%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .cafe-card {
+                grid-template-columns: 1fr;
+            }
+
+            .cafe-image {
+                height: 250px;
+            }
+
+            .criteria-items {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 7rem 1.5rem 2rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .cafe-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="coffee-beans bean1">☕</div>
+    <div class="coffee-beans bean2">☕</div>
+    <div class="coffee-beans bean3">☕</div>
+    <div class="coffee-beans bean4">☕</div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="coffee-icon">☕</span>
+            <span>CafeStudy</span>
+        </a>
+        <a href="kriteria.html" class="back-btn">← Kembali ke Pencarian</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Hasil Rekomendasi Cafe</h1>
+
+        <div class="criteria-summary">
+            <h3>📋 Kriteria Pencarian Anda</h3>
+            <div class="criteria-items">
+                <div class="criteria-item">
+                    <span>💰 Harga: </span>
+                    <strong id="criteriaHarga">Murah</strong>
+                </div>
+                <div class="criteria-item">
+                    <span>📍 Jarak: </span>
+                    <strong id="criteriaJarak">Sedang</strong>
+                </div>
+                <div class="criteria-item">
+                    <span>⚡ Fasilitas: </span>
+                    <strong id="criteriaFasilitas">Tidak Lengkap</strong>
+                </div>
+            </div>
+        </div>
+
+        <div id="cafeList" class="cafe-list">
+        </div>
+    </div>
+
+    <script>
+        const topCafe = {
+            name: "Bento Cafe",
+            image: "/static/bento.jpg",
+            description: "Bento Kopi Maguwo merupakan kafe dengan nuansa semi outdoor yang mengutamakan kenyamanan pengunjung dan menu yang murah. Tempat ini cocok digunakan untuk bekerja, belajar, maupun bersantai. Terdapat ruangan ber-AC untuk pelanggan yang tidak ingin berada di tempat semi outdoor",
+            score: 100
+        };
+
+        // Load kriteria dari localStorage
+        const criteria = JSON.parse(localStorage.getItem('cafeCriteria') || '{}');
+
+        if (criteria.hargaLabel) {
+            document.getElementById('criteriaHarga').textContent = `${criteria.hargaLabel} (${criteria.harga})`;
+            document.getElementById('criteriaJarak').textContent = `${criteria.jarakLabel} (${criteria.jarak})`;
+            document.getElementById('criteriaFasilitas').textContent = `${criteria.fasilitasLabel} (${criteria.fasilitas})`;
+        }
+
+        // Render cafe card
+        const cafeListContainer = document.getElementById('cafeList');
+        const cafeCard = document.createElement('div');
+        cafeCard.className = 'cafe-card';
+        cafeCard.innerHTML = `
+            <img src="${topCafe.image}" alt="${topCafe.name}" class="cafe-image">
+            <div class="cafe-content">
+                <div class="cafe-header">
+                    <div>
+                        <h2 class="cafe-name">${topCafe.name}</h2>
+                        <div class="cafe-score">Skor Rekomendasi: <strong>${topCafe.score}</strong>/100</div>
+                    </div>
+                    <div class="cafe-rank">🏆 Rank #1</div>
+                </div>
+                <p class="cafe-description">${topCafe.description}</p>
+            </div>
+        `;
+        cafeListContainer.appendChild(cafeCard);
+    </script>
+</body>
+
+</html>
