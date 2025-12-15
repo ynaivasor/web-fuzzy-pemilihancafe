@@ -25,7 +25,7 @@ def process():
     elif hasil == "senja":
         return redirect('/hasil_senja')
     else:
-        return redirect('/hasil_mato')  # fallback
+        return redirect('/hasil_mato') 
 
 @app.route('/hasil_santai')
 def hasil_santai():
